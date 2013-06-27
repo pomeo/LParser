@@ -86,7 +86,12 @@ while $i < @city.length do
             puts 'Error ' + link.href
           end
         end
-        $p += 1
+        if $p < 1001
+          $p += 1
+        else
+          $a += 1
+          $p = 0
+        end
       end
     end
   end
