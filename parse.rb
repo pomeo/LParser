@@ -76,11 +76,15 @@ while $i < @city.length do
         end
       else
         page.links_with(:class => 'name').each do |link|
-          a.get('http://loveplanet.ru'+link.href) do |anketa|
-            # здесь открывается анкета и можно её парсить
-            puts 'http://loveplanet.ru'+link.href+"\n"
+          begin
+            a.get('http://loveplanet.ru'+link.href) do |anketa|
+              # здесь открывается анкета и можно её парсить
+              puts 'http://loveplanet.ru'+link.href+"\n"
+            end
+            sleep 0.5 + rand # timeout между запросами к анкетам
+          rescue => e
+            puts 'Error ' + link.href
           end
-          sleep 0.5 + rand # timeout между запросами к анкетам
         end
         $p += 1
       end
