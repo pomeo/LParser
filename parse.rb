@@ -64,7 +64,7 @@ while $i < @city.length do
     puts url+"\n"
     a.get(url) do |page|
       if page.parser.xpath('//*[@id="content"]/div[2]/table/tr/td/div').text == 'Поиск не дал результатов'
-        if @city[$i][0] == 4400 && $m < @metro.length
+        if @city[$i][0] == '4400' && $m < @metro.length-1
           $m += 1
           $p = 0
           next
